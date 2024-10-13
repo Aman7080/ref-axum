@@ -12,6 +12,7 @@ use get_headers::get_header;
 use hello_world::hello_world;
 use path_params::path_param;
 use query_params::query_params;
+use tower_http::trace::TraceLayer;
 use tower_http::cors::{Any, CorsLayer};
 
 pub fn create_routes() -> Router {
@@ -31,5 +32,7 @@ pub fn create_routes() -> Router {
     .route("/query", get(query_params))
     .route("/headers", get(get_header))
     .layer(cors)
+    .layer(TraceLayer::new_for_http())
+    
 }
 

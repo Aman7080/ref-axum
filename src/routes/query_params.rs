@@ -3,7 +3,7 @@ use serde::{Deserialize, Serialize};
 
 #[derive(Deserialize,Serialize)]
 pub struct QueryData{
-    message : String,
+    message : Option<String>,
     title:String,
     id:i32
 }
